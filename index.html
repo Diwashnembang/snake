@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            max-height: 100vh;
+            background-color: #dee2ff;
+            justify-content: space-evenly;
+            overflow: hidden;
+        }
+
+        #canvas {
+            box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+            background: #264653
+        }
+
+
+
+        #score {
+            font-size: 3rem;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .box span {
+            min-width: 40px;
+            min-height: 40px;
+            display: inline-block;
+            margin-right: 0.6rem;
+
+        }
+
+        .box {
+            margin: 0.6rem;
+            font-size: 2rem;
+        }
+
+        #info {
+            margin: 1.6rem 0rem;
+        }
+
+        /* CSS */
+        .button-85 {
+            padding: 0.6em 2em;
+            border: none;
+            outline: none;
+            color: rgb(255, 255, 255);
+            background: #111;
+            cursor: pointer;
+            position: relative;
+            z-index: 0;
+            border-radius: 10px;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            font-size: 1.6rem;
+        }
+
+        .button-85:before {
+            content: "";
+            background: linear-gradient(45deg,
+                    #ff0000,
+                    #ff7300,
+                    #fffb00,
+                    #48ff00,
+                    #00ffd5,
+                    #002bff,
+                    #7a00ff,
+                    #ff00c8,
+                    #ff0000);
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            background-size: 400%;
+            z-index: -1;
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            animation: glowing-button-85 20s linear infinite;
+            transition: opacity 0.3s ease-in-out;
+            border-radius: 10px;
+        }
+
+        @keyframes glowing-button-85 {
+            0% {
+                background-position: 0 0;
+            }
+
+            50% {
+                background-position: 400% 0;
+            }
+
+            100% {
+                background-position: 0 0;
+            }
+        }
+
+        .button-85:after {
+            z-index: -1;
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #222;
+            left: 0;
+            top: 0;
+            border-radius: 10px;
+        }
+
+        #mobile-controlls {
+            min-width: 100vw;
+        }
+
+        #controlls {
+            min-width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hotizontal {
+            display: flex;
+            justify-content: space-evenly;
+            width: 100%;
+        }
+
+
+        #mobile-controlls {
+            display: none;
+        }
+
+        /* mobile view */
+        @media screen and (max-width:500px) {
+            body {
+                flex-direction: column-reverse;
+                justify-content: flex-end;
+
+            }
+
+            #score {
+                font-size: 1.5rem;
+            }
+
+            #user-input {
+
+                margin-top: 0.6rem;
+            }
+
+            .button-85 {
+                font-size: 1rem;
+            }
+
+            #pc-info {
+                display: none;
+            }
+
+            #mobile-controlls {
+                display: block;
+            }
+
+            #up,
+            #left,
+            #right,
+            #down,:hover {
+                cursor: pointer;
+            }
+
+            /* #down {
+                cursor: pointer;
+            } */
+        }
+    </style>
+</head>
+
+<body>
+    <img src="./arrowUp.png" alt="arrow up" style="display:none" id="arrowUpImg">
+    <img src="./arrowDown.png" alt="arrow down" style="display:none" id="arrowDownImg">
+    <img src="./arrowLeft.png" alt="arrow left" style="display:none" id="arrowLeftImg">
+    <img src="./arrowRight.png" alt="arrow right" style="display:none" id="arrowRightImg">
+
+
+    <div id="content">
+        <div id="score">
+            <p>Score : 0</p>
+        </div>
+        <div id="info">
+            <div id="pc-info">
+
+                <div>
+                    <h2>Controlls</h2>
+                </div>
+                <div class="box"><span><img src="./arrowUp.png" width="40px" height="40px" alt="arrow up"></span> Up
+                    ArrowKey
+                </div>
+                <div class=" box"><span><img src="./arrowDown.png" width="40px" height="40px" alt="arrow up"></span>Down
+                    ArrowKey
+                </div>
+                <div class=" box"><span><img src="./arrowLeft.png" width="40px" height="40px" alt="arrow up"></span>Left
+                    ArrowKey
+                </div>
+                <div class=" box"><span><img src="./arrowRight.png" width="40px" height="40px"
+                            alt="arrow up"></span>Right
+                    ArrowKey</div>
+            </div>
+        </div>
+        <div id="mobile-controlls">
+            <div>
+                <h2>Controlls</h2>
+            </div>
+            <div id="controlls">
+
+                <div id="up">
+                    <img src="./arrowUp.png" width="40px" height="40px" alt="arrow up" class="block">
+                </div>
+                <div class="hotizontal">
+                    <div id="left">
+                        <img src="./arrowLeft.png" width="40px" height="40px" alt="arrow left">
+                    </div>
+                    <div id="right">
+                        <img src="./arrowRight.png" width="40px" height="40px" alt="arrow right">
+                    </div>
+                </div>
+                <div id="down">
+                    <img src="./arrowDown.png" width="40px" height="40px" alt="arrow down">
+                </div>
+
+            </div>
+        </div>
+        <div id="user-input">
+            <button class="button-85" id="restart">Restart</button>
+        </div>
+    </div>
+    <canvas id="canvas"></canvas>
+    <script src="script.js"></script>
+</body>
+
+</html>
