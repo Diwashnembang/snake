@@ -2,7 +2,7 @@ let canvas = document.querySelector("#canvas")
 let size;
 if (window.innerWidth < 500) {
     canvas.width = 300;
-    canvas.height = 300
+    canvas.height = 200
     size = 20
 } else {
 
@@ -310,7 +310,11 @@ const restartGame = () => {
 let snake = Snake();
 let apple = food()
 snake.init();
-start(12);
+if(canvas.width===800){
+     start(12);
+}else{
+    start(6)
+}
 
 
 document.addEventListener("keydown", (e) => {
