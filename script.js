@@ -3,7 +3,7 @@ let size;
 if (window.innerWidth < 500) {
     canvas.width = 300;
     canvas.height = 200
-    size = 20
+    size = 10
 } else {
 
     canvas.width = 800;
@@ -205,7 +205,7 @@ const gameOverAnimation = () => {
     drawRect(0, canvas.height / 2 - size * 2, canvas.width, size * 2, "white");
     ctx.fillStyle = "#E76F51"
     ctx.font = `${size}px Times New Roman`;
-    ctx.fillText("Game Over!! Click Restart To Play Again!!", 30, canvas.height / 2 - size + 5);
+    ctx.fillText("Game Over!! Click Restart To Play Again!!", 25, canvas.height / 2 - size + 5);
 }
 
 
@@ -310,10 +310,10 @@ const restartGame = () => {
 let snake = Snake();
 let apple = food()
 snake.init();
-if(canvas.width===800){
-     start(12);
-}else{
-    start(6)
+if (canvas.width === 800) {
+    start(12);
+} else {
+    start(4)
 }
 
 
@@ -350,8 +350,8 @@ window.addEventListener("resize", () => {
     console.log("yess");
     if (window.innerWidth < 500) {
         canvas.width = 300;
-        canvas.height = 300
-        size = 20
+        canvas.height = 200
+        size = 10
     } else {
 
         canvas.width = 800;
