@@ -1,8 +1,8 @@
 let canvas = document.querySelector("#canvas")
 let size;
 if (window.innerWidth < 500) {
-    canvas.width = 400;
-    canvas.height = 500
+    canvas.width = 300;
+    canvas.height = 300
     size = 20
 } else {
 
@@ -345,8 +345,8 @@ restartDom.addEventListener("click", () => {
 window.addEventListener("resize", () => {
     console.log("yess");
     if (window.innerWidth < 500) {
-        canvas.width = 400;
-        canvas.height = 400
+        canvas.width = 300;
+        canvas.height = 300
         size = 20
     } else {
 
