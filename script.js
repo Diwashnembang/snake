@@ -1,7 +1,7 @@
 let canvas = document.querySelector("#canvas")
 let size;
 if (window.innerWidth < 500) {
-    canvas.width = 300;
+    canvas.width = window.innerWidth;
     canvas.height = 200
     size = 10
 } else {
@@ -313,7 +313,7 @@ snake.init();
 if (canvas.width === 800) {
     start(12);
 } else {
-    start(4)
+    start(1)
 }
 
 
@@ -347,7 +347,6 @@ restartDom.addEventListener("click", () => {
 })
 
 window.addEventListener("resize", () => {
-    console.log("yess");
     if (window.innerWidth < 500) {
         canvas.width = 300;
         canvas.height = 200
