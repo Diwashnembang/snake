@@ -359,25 +359,25 @@ window.addEventListener("resize", () => {
     }
 })
 
-moveUpDom.addEventListener("touchstart", () => {
+moveUpDom.addEventListener("click", () => {
     firstMove = true;
     if (direction !== "down") {
         direction = "up"
     }
 })
-moveDownDom.addEventListener("touchstart", () => {
+moveDownDom.addEventListener("click", () => {
     firstMove = true;
     if (direction !== "up") {
         direction = "down"
     }
 })
-moveLeftDom.addEventListener("touchstart", () => {
+moveLeftDom.addEventListener("click", () => {
     firstMove = true;
     if (direction !== "right") {
         direction = "left"
     }
 })
-moveRightDom.addEventListener("touchstart", () => {
+moveRightDom.addEventListener("click", () => {
     firstMove = true;
     if (direction !== "left") {
         direction = "right"
